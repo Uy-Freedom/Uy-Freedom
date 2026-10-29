@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020916" />
+      <stop offset="50%" stop-color="#071326" />
+      <stop offset="100%" stop-color="#030b1e" />
+    </linearGradient>
+
+    <!-- Neon Cyan Gradient -->
+    <linearGradient id="cyanNeon" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#00f2fe" stroke-width="0.5" stroke-opacity="0.12" />
+    </pattern>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Strong Outer Glow -->
+    <filter id="strongGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="24" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulse {
+      0% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+      100% { opacity: 0.7; transform: scale(1); }
+    }
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes floatStar {
+      0%, 100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+      50% { transform: translateY(-4px) scale(1.15); opacity: 1; filter: drop-shadow(0 0 8px #00f2fe); }
+    }
+    .neon-title {
+      font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      fill: url(#cyanNeon);
+      filter: url(#strongGlow);
+      letter-spacing: 4px;
+    }
+    .sub-text {
+      font-family: 'Segoe UI', Roboto, -apple-system, sans-serif;
+      font-size: 15px;
+      fill: #94a3b8;
+    }
+    .moon-glow {
+      animation: pulse 4s ease-in-out infinite;
+      transform-origin: 650px 180px;
+    }
+    .star-anim {
+      animation: floatStar 3s ease-in-out infinite;
+      transform-origin: 708px 175px;
+    }
+    .orbit-ring {
+      animation: rotateSlow 20s linear infinite;
+      transform-origin: 650px 180px;
+    }
+  </style>
+
+  <!-- Border & Main Background -->
+  <rect width="850" height="360" rx="16" fill="url(#bgGlow)" stroke="#00f2fe" stroke-width="1.5" stroke-opacity="0.4" />
+  <rect width="850" height="360" rx="16" fill="url(#grid)" />
+
+  <!-- Left Content Block -->
+  <g transform="translate(45, 60)">
+    <!-- Collaboration Badge -->
+    <g transform="translate(0, 0)">
+      <rect width="215" height="28" rx="14" fill="#071d33" stroke="#00f2fe" stroke-width="1" stroke-opacity="0.6" />
+      <circle cx="16" cy="14" r="5" fill="#00f2fe" filter="url(#glow)" />
+      <text x="30" y="18" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#00f2fe" letter-spacing="1">AVAILABLE FOR COLLABORATION</text>
+    </g>
+
+    <!-- Hello World Sub-header -->
+    <text x="2" y="62" font-family="monospace" font-size="14" font-weight="600" fill="#38bdf8" letter-spacing="3">► HELLO WORLD, IT IS</text>
+
+    <!-- Main Name FREEDOM -->
+    <text x="0" y="122" class="neon-title">FREEDOM</text>
+
+    <!-- Description Lines -->
+    <text x="2" y="160" class="sub-text">Building open, decentralized, and elegant software</text>
+    <text x="2" y="182" class="sub-text">experiences. Empowering innovation through clean code</text>
+    <text x="2" y="204" class="sub-text">and modern technology.</text>
+  </g>
+
+  <!-- Right Moon & Star Cyberpunk Graphic -->
+  <g class="moon-glow">
+    <!-- Tech Orbit Rings -->
+    <circle cx="650" cy="180" r="115" fill="none" stroke="#00f2fe" stroke-width="1" stroke-opacity="0.2" stroke-dasharray="6,6" class="orbit-ring" />
+    <circle cx="650" cy="180" r="98" fill="none" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.3" />
+
+    <!-- Crescent Moon (كۆك ئاي) -->
+    <path d="M 650 95 
+             A 85 85 0 1 0 735 180 
+             A 70 70 0 1 1 650 95 Z" fill="url(#cyanNeon)" filter="url(#strongGlow)" />
+
+    <!-- Star (كۆك يۇلتۇز) -->
+    <polygon points="708,162 712,172 723,172 714,178 717,188 708,181 699,188 702,178 693,172 704,172" fill="#ffffff" filter="url(#glow)" class="star-anim" />
+  </g>
+</svg>
